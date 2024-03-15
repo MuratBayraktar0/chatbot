@@ -11,18 +11,18 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-app.post("/askme", async (req: Request, res: Response) => {
+app.post("/api/questions*", async (req: Request, res: Response) => {
   try {
     const data = req.body;
 
-    // Check if sessionID and question are provided
-    if (!data.sessionID || !data.question) {
+    // Check if session_id and question are provided
+    if (!data.session_id || !data.question) {
       return res
         .status(400)
-        .json({ error: "sessionID and question are required" });
+        .json({ error: "session_id and question are required" });
     }
 
-    const chatbot = new ChatBot(data.sessionID);
+    const chatbot = new ChatBot(data.session_id);
     await chatbot.initialize();
     await chatbot.ask(data.question);
 
