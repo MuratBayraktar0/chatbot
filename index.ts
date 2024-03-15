@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-app.post("/api/questions*", async (req: Request, res: Response) => {
+app.post("/api/questions", async (req: Request, res: Response) => {
   try {
     const data = req.body;
 
