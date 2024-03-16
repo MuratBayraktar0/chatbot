@@ -46,7 +46,8 @@ export const getDocuments = async () => {
     ".pdf": (path) => new PDFLoader(path),
   });
 
-  return await loader.load();
+  const load = await loader.load();
+  return load;
 };
 
 export const getVectorStore = async (docs: Document<Record<string, any>>[]) => {
@@ -85,7 +86,7 @@ const serializeChatHistory = (chatHistory: Array<BaseMessage>): string =>
     })
     .join("\n");
 
-    export const getLLMChain = () => {
+export const getLLMChain = () => {
   const questionPrompt = PromptTemplate.fromTemplate(questionTemplate);
 
   // Initialize fast and slow LLMs, along with chains for each
@@ -160,6 +161,3 @@ export const getChain = (
 
   return mainChain;
 };
-
-
-
